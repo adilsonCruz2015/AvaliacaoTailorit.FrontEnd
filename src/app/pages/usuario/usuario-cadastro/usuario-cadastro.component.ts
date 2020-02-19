@@ -2,7 +2,7 @@ import { Component, OnInit, AfterViewInit, ViewChildren, ElementRef } from '@ang
 import { FormControlName, FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { Usuario } from 'src/app/core/modelos/usuario.model';
 import { Sexo } from 'src/app/core/modelos/sexo.model';
-import { ValidationMessages } from 'src/app/core/modelos/generic-form-validation';
+import { ValidationMessages, GenericValidator, DisplayMessage } from 'src/app/core/modelos/generic-form-validation';
 
 @Component({
   selector: 'app-usuario-cadastro',
@@ -19,8 +19,29 @@ export class UsuarioCadastroComponent implements OnInit, AfterViewInit {
   sexos: Sexo[];
 
   validationMessages: ValidationMessages;
+  genericValidator: GenericValidator;
+  displayMessage: DisplayMessage = {};
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder) { 
+
+    this.validationMessages = {
+      nome: {
+        required: 'O Nome é requerido',
+        minlength: 'O Nome precisa ter no mínimo 3 caracteres',
+        maxlength: 'O Nome precisa ter no máximo 20 caracteres'
+      },
+      dataNascimento: {
+        required: 'Informe a Data de Nascimento'
+      },
+      sexo: {
+        required: 'Informe o sexo'
+      }
+    };
+
+    this.genericValidator = new GenericValidator(this.validationMessages);
+   }
+
+  
 
   ngAfterViewInit(): void {
     
