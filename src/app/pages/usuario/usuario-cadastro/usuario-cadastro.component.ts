@@ -3,6 +3,8 @@ import { FormControlName, FormGroup, FormBuilder, Validators, FormControl } from
 import { Usuario } from 'src/app/core/modelos/usuario.model';
 import { Sexo } from 'src/app/core/modelos/sexo.model';
 import { ValidationMessages, GenericValidator, DisplayMessage } from 'src/app/core/modelos/generic-form-validation';
+import { SexoServico } from 'src/app/core/servicos/sexo.servico';
+import { UsuarioServico } from 'src/app/core/servicos/usuario.servico';
 
 @Component({
   selector: 'app-usuario-cadastro',
@@ -22,7 +24,9 @@ export class UsuarioCadastroComponent implements OnInit, AfterViewInit {
   genericValidator: GenericValidator;
   displayMessage: DisplayMessage = {};
 
-  constructor(private fb: FormBuilder) { 
+  constructor(private fb: FormBuilder,
+             private sexoServico: SexoServico,
+             private usuarioServico: UsuarioServico) { 
 
     this.validationMessages = {
       nome: {
