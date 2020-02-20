@@ -6,20 +6,4 @@ import { Component } from '@angular/core';
   styleUrls: ['./menu.component.css']
 })
 export class MenuComponent  {
-
-  nav: Nav[] = [
-    {
-      link: 'usuario',
-      name: 'Cadastro de Usuário',
-      exact: true,
-      admin: true
-    }
-  ];
-}
-
-interface Nav {
-  link: string;
-  name: string;
-  exact: boolean;
-  admin: boolean;
 }
