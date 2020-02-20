@@ -47,7 +47,7 @@ export class UsuarioServico {
 
 interface FiltrarParams {
     nome?: string[] | string;
-    ativo?: boolean[] | boolean;
+    ativo?: string[] | string;
   }
 
 interface InserirParams {
